@@ -46,6 +46,7 @@ class SampleApiConnectorTest {
             ProjectDocument::class.java,
             ProjectInformationRecord::class.java,
             OfficePetDocument::class.java,
+            PetToyDocument::class.java,
         )
 
         alxndria.datasource.putDatasource(Datasource(datasourceIdentifier))
@@ -64,6 +65,7 @@ class SampleApiConnectorTest {
         test_traverseDocuments_notEmpty_containsExpectedFields<ComputerDocument>(EXPECTED_COMPUTER_DOCUMENT_FIELDS)
         test_traverseDocuments_notEmpty_containsExpectedFields<ProjectDocument>(EXPECTED_PROJECT_DOCUMENT_FIELDS)
         test_traverseDocuments_notEmpty_containsExpectedFields<OfficePetDocument>(EXPECTED_OFFICE_PET_DOCUMENT_FIELDS)
+        test_traverseDocuments_notEmpty_containsExpectedFields<PetToyDocument>(EXPECTED_PET_TOY_DOCUMENT_FIELDS)
     }
 
 
@@ -95,6 +97,11 @@ class SampleApiConnectorTest {
         )
         val EXPECTED_OFFICE_PET_DOCUMENT_FIELDS = listOf(
             GenericField(name = "name", value = "Broccoli"),
+        )
+        val EXPECTED_PET_TOY_DOCUMENT_FIELDS = listOf(
+            GenericField(name="id", value="10"),
+            GenericField(name="petId", value="p1"),
+            GenericField(name="description", value="Ball"),
         )
     }
 }
