@@ -13,10 +13,7 @@ import io.datalbry.connector.sdk.test.getAllDocumentsByDatasourceIdentiferOfType
 import io.datalbry.precise.api.schema.document.generic.GenericField
 import io.datalbry.precise.core.schema.factory.ReflectionSchemaFactory
 import io.datalbry.sample.api.connector.extension.SampleApiConnectorTestExtension
-import io.datalbry.sample.api.connector.model.ComputerDocument
-import io.datalbry.sample.api.connector.model.PersonDocument
-import io.datalbry.sample.api.connector.model.ProjectDocument
-import io.datalbry.sample.api.connector.model.ProjectInformationRecord
+import io.datalbry.sample.api.connector.model.*
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -48,6 +45,7 @@ class SampleApiConnectorTest {
             ComputerDocument::class.java,
             ProjectDocument::class.java,
             ProjectInformationRecord::class.java,
+            OfficePetDocument::class.java,
         )
 
         alxndria.datasource.putDatasource(Datasource(datasourceIdentifier))
@@ -65,6 +63,7 @@ class SampleApiConnectorTest {
         test_traverseDocuments_notEmpty_containsExpectedFields<PersonDocument>(EXPECTED_PERSON_DOCUMENT_FIELDS)
         test_traverseDocuments_notEmpty_containsExpectedFields<ComputerDocument>(EXPECTED_COMPUTER_DOCUMENT_FIELDS)
         test_traverseDocuments_notEmpty_containsExpectedFields<ProjectDocument>(EXPECTED_PROJECT_DOCUMENT_FIELDS)
+        test_traverseDocuments_notEmpty_containsExpectedFields<OfficePetDocument>(EXPECTED_OFFICE_PET_DOCUMENT_FIELDS)
     }
 
 
@@ -82,17 +81,20 @@ class SampleApiConnectorTest {
 
     companion object {
         val EXPECTED_PERSON_DOCUMENT_FIELDS = listOf(
-            GenericField(name="id", value="first"),
+            GenericField(name = "id", value = "first"),
         )
         val EXPECTED_COMPUTER_DOCUMENT_FIELDS = listOf(
-            GenericField(name="personId", value="first"),
-            GenericField(name="id", value="aaac"),
-            GenericField(name="model", value="Notebook 2020"),
+            GenericField(name = "personId", value = "first"),
+            GenericField(name = "id", value = "aaac"),
+            GenericField(name = "model", value = "Notebook 2020"),
         )
         val EXPECTED_PROJECT_DOCUMENT_FIELDS = listOf(
-            GenericField(name="personId", value="first"),
-            GenericField(name="id", value="ca"),
-            GenericField(name="name", value="Super Duper Project"),
+            GenericField(name = "personId", value = "first"),
+            GenericField(name = "id", value = "ca"),
+            GenericField(name = "name", value = "Super Duper Project"),
+        )
+        val EXPECTED_OFFICE_PET_DOCUMENT_FIELDS = listOf(
+            GenericField(name = "name", value = "Broccoli"),
         )
     }
 }

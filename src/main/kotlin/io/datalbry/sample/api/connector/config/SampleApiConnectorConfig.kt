@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration
 open class SampleApiConnectorConfig {
 
     @Bean
-    open fun clockifyClient(properties: SampleApiProperties): SampleApiClient{
+    open fun clockifyClient(properties: SampleApiProperties): SampleApiClient {
         val config = SampleApiClientConfig(properties.uri)
         return SampleApiClientFactory().create(config)
     }
