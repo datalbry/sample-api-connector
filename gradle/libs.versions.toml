@@ -1,0 +1,5 @@
+[versions]
+datalbry-client-sample-api = "1.0-SNAPSHOT"
+
+[libraries]
+datalbry-client-sample-api = { module = "io.datalbry.sample-api:sample-api-client", version.ref = "datalbry-client-sample-api" }
